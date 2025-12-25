@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedic Engine - Professional Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/astronomy-engine@2.1.19/astronomy.browser.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Jyotish Calculation Foundation</h1>
+        <p>Sidereal Precision & Marriage Destiny Analysis</p>
+    </header>
+
+    <div class="grid-layout">
+        <!-- PERSONA 1 -->
+        <div class="chart-card">
+            <div class="card-head male-head"><span>PRIMARY PERSONA</span><span>♂</span></div>
+            <div class="input-group">
+                <div class="search-area">
+                    <label>Birth Location</label>
+                    <input type="text" id="m_city" placeholder="Locating..." oninput="app.ui.handleSearch('m')">
+                    <div id="m_city_results" class="results-dropdown"></div>
+                </div>
+                <div class="input-row" style="margin-top:10px;">
+                    <div><label>Date</label><input type="date" id="m_dob"></div>
+                    <div><label>Time</label><input type="time" id="m_tob"></div>
+                </div>
+                <div class="input-row">
+                    <div><label>Timezone (UTC+)</label><input type="number" id="m_tz" value="5.5" step="0.5"></div>
+                    <div style="display:flex; align-items:flex-end;">
+                        <button onclick="app.calculate('m')" class="btn-proc" style="background:#3b82f6;">Calculate Chart</button>
+                    </div>
+                </div>
+            </div>
+            <table class="planet-table">
+                <thead><tr><th>Body</th><th>Sign</th><th>Degree</th><th>Nakshatra (Pada)</th><th>Dignity</th></tr></thead>
+                <tbody id="m_table_body"></tbody>
+            </table>
+            <div id="m_analysis" class="analysis-box" style="display:none;"></div>
+        </div>
+
+        <!-- PERSONA 2 -->
+        <div class="chart-card">
+            <div class="card-head female-head"><span>SECONDARY PERSONA</span><span>♀</span></div>
+            <div class="input-group">
+                <div class="search-area">
+                    <label>Birth Location</label>
+                    <input type="text" id="f_city" placeholder="Search city..." oninput="app.ui.handleSearch('f')">
+                    <div id="f_city_results" class="results-dropdown"></div>
+                </div>
+                <div class="input-row" style="margin-top:10px;">
+                    <div><label>Date</label><input type="date" id="f_dob"></div>
+                    <div><label>Time</label><input type="time" id="f_tob"></div>
+                </div>
+                <div class="input-row">
+                    <div><label>Timezone (UTC+)</label><input type="number" id="f_tz" value="0.0" step="0.5"></div>
+                    <div style="display:flex; align-items:flex-end;">
+                        <button onclick="app.calculate('f')" class="btn-proc" style="background:#db2777;">Calculate Chart</button>
+                    </div>
+                </div>
+            </div>
+            <table class="planet-table">
+                <thead><tr><th>Body</th><th>Sign</th><th>Degree</th><th>Nakshatra (Pada)</th><th>Dignity</th></tr></thead>
+                <tbody id="f_table_body"></tbody>
+            </table>
+            <div id="f_analysis" class="analysis-box" style="display:none;"></div>
+        </div>
+    </div>
+    
+    <input type="hidden" id="m_lat"><input type="hidden" id="m_lon">
+    <input type="hidden" id="f_lat"><input type="hidden" id="f_lon">
+</div>
+
+<script src="js/constants.js"></script>
+<script src="js/astronomy-wrapper.js"></script>
+<script src="js/vedic-engine.js"></script>
+<script src="js/marriage-analyzer.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
